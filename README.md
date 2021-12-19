@@ -1,12 +1,15 @@
 # cubit_example
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
+В этом проекте проверяю и тестирую взаимодействие между кубита и блоком.
+  Также некоторые синтактические конструкции при верстке виджетов.
+   
+  Некоторые знанения имеют значения отличные от нуля, 
+   пишу их чтобы держать себя в тонусе, повышвя осмысленность при написании тестирования и проверке результов.
+   
+   Данный код описывает некоторые ньансы которые упущены в официальной документации.
+ 
+     
+- [the MIT license](https://en.wikipedia.org/wiki/MIT_License)
 
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
