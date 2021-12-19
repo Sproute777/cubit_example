@@ -18,7 +18,7 @@ const _blueButtonInsertValueKey = Key(kBlueButtonInsertValue);
 
 const _greenButtonIncrementKey = Key(kGreenButtonIncrement);
 const _greenButtonDecrementKey = Key(kGreenButtonDecrement);
-const _greenButttonInsertValueKey = Key(kGreenButtonInsertValue);
+const _greenButtonInsertValueKey = Key(kGreenButtonInsertValue);
 
 void main() {
   late BlueCubit blueCubit;
@@ -33,7 +33,7 @@ void main() {
 
   group('CounterView',(){
     
-    testWidgets('render current CounterCubit state',(tester) async{
+    testWidgets('render current BlueCubit state',(tester) async{
       when(() => blueCubit.state).thenReturn(44);
       await tester.pumpWidget(
         MaterialApp(
@@ -98,6 +98,7 @@ void main() {
      );
      await tester.tap(find.byKey(_blueButtonDecrementKey));
      verify( () => blueCubit.decrement()).called(1);
+
   });
   testWidgets('tapping inserValue blue button invokes inserValue',(tester)async{
      when(() => blueCubit.state).thenReturn(0);
@@ -124,7 +125,100 @@ void main() {
      );
      await tester.tap(find.byKey(_blueButtonInsertValueKey));
      verify( () => blueCubit.insertValue(10)).called(1);
-    //  verify( () => sumBloc.add(BlueValue(value: 10))).called(1);
+  });
+    
+    testWidgets('render current GreenCubit state',(tester) async{
+      when(() => greenCubit.state).thenReturn(55);
+      await tester.pumpWidget(
+        MaterialApp(
+          home: BlocProvider.value(
+            value: greenCubit,
+            child: CounterTextGreen(),
+          )
+        )
+      );
+      expect(find.text('55'), findsOneWidget);
+    });
+
+   testWidgets('tapping increment green button invokes increment', (tester) async{
+     when(() => blueCubit.state).thenReturn(0);
+     when(() => greenCubit.state).thenReturn(0);
+     when(() => sumBloc.state).thenReturn(SumState(b: 0,g:0,sum: 0));
+     when(() => greenCubit.increment()).thenReturn((){});
+     await tester.pumpWidget(
+       MaterialApp(
+         home: MultiBlocProvider(
+             providers: [
+                 BlocProvider.value(
+                    value: blueCubit,
+                  ),
+                 BlocProvider.value(
+                     value:  greenCubit,
+                 ),
+                 BlocProvider.value(
+                     value:  sumBloc,
+                 ),
+             ],
+                        child: CounterView(),
+         )
+       )
+     );
+     await tester.tap(find.byKey(_greenButtonIncrementKey));
+     verify( () => greenCubit.increment()).called(1);
+   });
+
+  testWidgets('tapping decrement green button invokes descrement',(tester)async{
+     when(() => blueCubit.state).thenReturn(0);
+     when(() => greenCubit.state).thenReturn(0);
+     when(() => sumBloc.state).thenReturn(SumState(b: 0,g:0,sum: 0));
+     when(() => greenCubit.increment()).thenReturn((){});
+     await tester.pumpWidget(
+           MaterialApp(
+         home: MultiBlocProvider(
+             providers: [
+                 BlocProvider.value(
+                    value: blueCubit,
+                  ),
+                 BlocProvider.value(
+                     value:  greenCubit,
+                 ),
+                 BlocProvider.value(
+                     value:  sumBloc,
+                 ),
+             ],
+                        child: CounterView(),
+         )
+       )
+     );
+     await tester.tap(find.byKey(_greenButtonDecrementKey));
+     verify( () => greenCubit.decrement()).called(1);
+
+  });
+  testWidgets('tapping inserValue blue button invokes inserValue',(tester)async{
+     when(() => blueCubit.state).thenReturn(0);
+     when(() => greenCubit.state).thenReturn(0);
+     when(() => sumBloc.state).thenReturn(SumState(b: 0,g:0,sum: 0));
+     when(() => greenCubit.decrement()).thenReturn((){});
+     await tester.pumpWidget(
+           MaterialApp(
+         home: MultiBlocProvider(
+             providers: [
+                 BlocProvider.value(
+                    value: blueCubit,
+                  ),
+                 BlocProvider.value(
+                     value:  greenCubit,
+                 ),
+                 BlocProvider.value(
+                     value:  sumBloc,
+                 ),
+             ],
+                        child: CounterView(),
+         )
+       )
+     );
+     await tester.tap(find.byKey(_greenButtonInsertValueKey));
+     verify( () => greenCubit.insertValue(10)).called(1);
   });
 
   });
