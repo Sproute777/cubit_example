@@ -9,7 +9,7 @@
    Данный код описывает некоторые ньансы которые упущены в официальной документации.
  
      
-- [license MIT](https://en.wikipedia.org/wiki/MIT_License)
+- [the MIT license](https://en.wikipedia.org/wiki/MIT_License)
 
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
