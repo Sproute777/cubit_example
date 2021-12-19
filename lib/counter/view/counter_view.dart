@@ -19,10 +19,11 @@ class CounterView extends StatelessWidget {
           appBar: AppBar( title: const Text('Counter cubit')),
           body:  Column( 
             mainAxisAlignment: MainAxisAlignment.center,
-            children:  const<Widget> [
-             CounterTextBlue(),
-             CounterTextGreen(),
-             CounterTextSum()
+            children:  <Widget> [
+             const CounterTextBlue(),
+             const CounterTextGreen(),
+             const CounterTextSum(),
+             SizedBox(width: size.width,),
             ],
           ),
           bottomSheet: SizedBox(
@@ -108,7 +109,7 @@ class CounterTextSum extends StatelessWidget {
   Widget build(BuildContext context) {
     debugPrint("CounterTextSum build");
     final countNow = context.watch<SumBloc>().state;
-    return Text('Sum bath cubits ${countNow.sum}', style: const TextStyle(fontSize: 30 , color: Colors.orange),);
+    return Text('Sum bath cubits ${countNow.sum}', style: const TextStyle(fontSize: 30 , color: Colors.white),);
   }
 }
 
