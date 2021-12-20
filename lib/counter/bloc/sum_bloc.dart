@@ -20,8 +20,8 @@ class SumBloc extends Bloc< SumEvent ,SumState> {
   }
    late final   BlueCubit   _blueCubit;
    late final   GreenCubit  _greenCubit;
-   late final   StreamSubscription<int>? _subsBlue;
-   late final   StreamSubscription<int>? _subsGreen;
+      StreamSubscription<int>? _subsBlue;
+      StreamSubscription<int>? _subsGreen;
 
   void _onBlueValue(BlueValue event, Emitter<SumState> emit){
     emit(state.copyWith(b: event.value));
