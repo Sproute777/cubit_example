@@ -7,7 +7,7 @@ class SumState extends Equatable{
   const SumState({
      this.b  = -3,
      this.g = 2,
-     this.sum = 1,
+     this.sum = -1,
   });
 
   SumState copyWith({
